@@ -1,0 +1,458 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Product landing page for [Product Name]">
+  <title>[Product Name] - Best Price and Deals</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /*header {
+      background-color: #ff6f61;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }*/
+    
+    
+    header {
+  background-color: #f66b07;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* space between logo and text */
+}
+
+.brand-logo {
+  width: 300px;   /* adjust size as needed */
+  height: auto;
+}
+
+
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .product-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .product-section {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .product-details {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .specification--wrap--lxVQ2tj {
+        flex: 1;
+      }
+    }
+
+    .product-title {
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .product-image {
+      max-width: 100%;
+      display: block;
+      margin: 20px 0;
+    }
+
+    .price {
+      font-size: 1.5em;
+      color: #ff5722;
+      margin: 10px 0;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .discount {
+      color: #ff6f61;
+      font-weight: bold;
+    }
+
+    .product-details, .reviews {
+      margin: 30px 0;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ff5722;
+      color: white;
+      padding: 15px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .reviews-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.review-card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  /* margin removed — use gap for spacing */
+  width: calc(33.33% - 20px); /* 3 per row on large screens */
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: width 0.3s ease;
+}
+
+/* Medium screens: 2 reviews per row */
+@media (max-width: 768px) {
+  .review-card {
+    width: calc(50% - 20px);
+  }
+}
+
+/* Small screens: 1 review per row */
+@media (max-width: 480px) {
+  .review-card {
+    width: 100%;
+  }
+}
+
+
+    .review-card h4 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .review-card p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .specifications-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .specifications-table th,
+    .specifications-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .specifications-table tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .specifications-table tr td[colspan="2"] {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+    
+    
+    /*new code */
+    
+    
+    .product-listings {
+  margin: 40px 0;
+}
+
+.product-listings h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: calc(20% - 20px); /* 5 per row on large screens */
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: width 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  margin: 5px 0;
+}
+
+/* Medium screens - tablets: 3 products per row */
+@media (max-width: 992px) {
+  .product-card {
+    width: calc(33.333% - 20px);
+  }
+}
+
+/* Small screens - phones: 2 products per row */
+@media (max-width: 600px) {
+  .product-card {
+    width: calc(50% - 20px);
+  }
+}
+
+/* Extra small - very small phones: 1 product per row */
+@media (max-width: 400px) {
+  .product-card {
+    width: 100%;
+  }
+}
+
+
+/* new code */
+.thumbnail-gallery {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+  border: 2px solid #ff6f61;
+}
+
+.main-image {
+  margin-bottom: 10px;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<header>
+<img src="Screenshot_4-6-2025_5755_buyvalue.netlify.app.jpeg" alt="[Brand Logo]" class="brand-logo">
+  <h1></h1>
+  <p>Your ultimate store for your needs</p>
+</header>
+
+<div class="container">
+  <!-- Product Details and Specifications Side by Side -->
+  <div class="product-section">
+
+    <!--<div class="product-details">-->
+      <!--<img src="https://ae-pic-a1.aliexpress-media.com/kf/S3f7286ab135247bc98225fd77d0dd818T.jpg_640x640.jpg_.webp" alt="[Product Name]" class="product-image">-->
+<!--<img src="Screenshot_25-5-2025_151125_pixlr.com.jpeg" alt="[Product Name]" class="product-image">
+      <div class="product-info">
+        <h2 class="product-title">Solar Power Station 150 Watts</h2>
+        <div class="price">
+          <span class="old-price">₱5000</span>
+          ₱3000 <span class="discount">40% OFF</span>
+        </div>
+        <p><strong>Available Colors:</strong> Black</p>
+        <p><strong>Shipping:</strong> Maxim/Lalamove</p>
+        <a href="#buy-now" class="button">Buy Now</a>
+      </div>
+    </div>-->
+
+
+<div class="product-details">
+  <div class="main-image">
+    <img id="mainProductImage" src="Screenshot_31-5-2025_222841_pixlr.com.jpeg" alt="[Product Name]" class="product-image">
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="thumbnail-gallery">
+    <img src="Screenshot_31-5-2025_222841_pixlr.com.jpeg" alt="Thumb 1" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_31-5-2025_43019_pixlr.com.jpeg" alt="Thumb 2" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_31-5-2025_43738_pixlr.com.jpeg" alt="Thumb 3" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_31-5-2025_222649_pixlr.com.jpeg" alt="Thumb 4" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_31-5-2025_222742_pixlr.com.jpeg" alt="Thumb 5" class="thumbnail active" onclick="changeImage(this)">
+  </div>
+
+  <div class="product-info">
+    <h2 class="product-title">Portable Solar Power station 300 Watts - 420WH 21A</h2>
+    <div class="price">
+      <span class="old-price">₱15000</span>
+      ₱8700 <span class="discount">Now</span>
+    </div>
+    <p><strong>Available Colors:</strong> Black</p>
+    <p><strong>Shipping:</strong> Maxim/Lalamove</p>
+    <!--<a href="#buy-now" class="button">Buy Now</a>-->
+  </div>
+</div>
+
+
+    <!-- Specifications Table -->
+    <div class="specification--wrap--lxVQ2tj" id="nav-specification" data-pl="product-specs">
+      <div class="title--wrap--NWOaiSp">
+        <div class="title--text--Otu0bLr">
+          <h2 class="title--title--O6xcB1q">Specifications</h2>
+        </div>
+      </div>
+      <table class="specifications-table">
+        <tbody>
+          <tr><th>Specification</th><th>Description</th></tr>
+          <tr><td>High-concerned Chemical</td><td>none</td></tr>
+          <tr><td>Battery Core Manufacturer</td><td>other</td></tr>
+          <tr><td>Display Screen</td><td>Yes</td></tr>
+          <tr><td>Nominal Capacity</td><td>&gt;175000mAh</td></tr>
+          <tr><td>Certification</td><td>CE, FCC, RoHS, UL</td></tr>
+          <tr><td>Size</td><td>F</td></tr>
+          <tr><td>Model Number</td><td>ZW-QLN300W</td></tr>
+          <tr><td>Type</td><td>Lifepo4</td></tr>
+          <tr><td>Origin</td><td>Mainland China</td></tr>
+          <tr><td>Replacement Battery</td><td>No</td></tr>
+          <tr><td>Battery Number</td><td>1</td></tr>
+          <tr><td>Set Type</td><td>Charger Sets</td></tr>
+          <tr><td>Bundle</td><td>Bundle 1</td></tr>
+          <tr><td>Brand Name</td><td>Siweishi Technology</td></tr>
+          <tr><td colspan="2"><strong>Features</strong></td></tr>
+          <tr><td>220V Compatible</td><td>Solar-powered battery generator</td></tr>
+          <tr><td>12.8V Energy Capacity</td><td>Portable solar generator</td></tr>
+          <tr><td>Corrected Sine Wave</td><td>Solar power generator</td></tr>
+          <tr><td>USB Input</td><td>Solar generator for home</td></tr>
+          <tr><td>DC Input</td><td>Power bank camping 220V 110V</td></tr>
+          <tr><td>Flash Light</td><td>Solar electric generator</td></tr>
+          <tr><td>Emergency Light</td><td>Eco-friendly solar charger</td></tr>
+          <tr><td>50/60 HZ</td><td>Portable power for electronics</td></tr>
+          <tr><td style="
+    background: yellow;
+">5000 Life Cycle</td><td>Battery for outdoor adventures</td></tr>
+          <tr><td style="
+    background: yellow;
+">420 Watt Hours</td><td>Sustainable power source</td></tr>
+          <tr><td style="
+    background: yellow;
+">21 Amps</td><td>Rechargeable with solar or AC</td></tr>
+          <tr><td></td><td>Compact design for portability</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div> <!-- .product-section -->
+
+  <!-- Product Features Section -->
+  <!--<div class="product-description">
+    <h3>Product Features</h3>
+    <ul>
+      <li><strong>Feature 1:</strong> [Feature description]</li>
+      <li><strong>Feature 2:</strong> [Feature description]</li>
+      <li><strong>Feature 3:</strong> [Feature description]</li>
+      <li><strong>Feature 4:</strong> [Feature description]</li>
+    </ul>
+  </div>-->
+  
+  
+  <!-- Product Listings Section -->
+<div class="product-listings">
+  <h3>More Products You May Like</h3>
+  <div class="product-grid">
+    <!-- 15 product cards -->
+    
+    
+    
+    <div class="product-card">
+      <a href="300watts15.html" style="text-decoration: none; color: black;"><img src="Screenshot_30-5-2025_54254_pixlr.com.jpeg" alt="Product 4">
+      <p>Portable Solar Power station 300 Watts - 315WH 15A</p>
+      <p class="price">₱5700</p></a>
+    </div>
+    <div class="product-card">
+      <a href="300watts18.html" style="text-decoration: none; color: black;"><img src="Screenshot_30-5-2025_212357_pixlr.com.jpeg" alt="Product 5">
+      <p>Portable Solar Power station 300 Watts - 370WH 18A</p>
+      <p class="price">₱7000</p>
+    </a></div>
+
+    
+    
+    
+    <a href="300watts15.html" style="text-decoration: none; color: black;"></a><div class="product-card"><a href="300watts21.html" style="text-decoration: none; color: black;">
+      <img src="Screenshot_31-5-2025_222841_pixlr.com.jpeg" alt="Product 9">
+      <p>Portable Solar Power station 300 Watts - 420WH 21A</p>
+      <p class="price">₱8700</p></a>
+    </div>
+    
+
+    <div class="product-card">
+      <a href="150watts.html" style="text-decoration: none; color: black;"><img src="H24c1e63e8f3c4cb1a7a6d232b4700df3B.webp" alt="Product 11">
+      <p>Portable Solar Power station 150 Watts - 150WH 12A</p>
+      <p class="price">₱3000</p></a>
+    </div>
+    
+    
+    
+    
+  </div>
+</div>
+
+
+  <!-- Customer Reviews -->
+  
+</div>
+
+<!-- Footer -->
+<div class="footer-copywrite y2023" style="background: #f66b07; color: white;">
+  <div class="container">
+    ©️2010-2024 AliExpress.com. All rights reserved.
+    <a ref="nofollow">
+      <img alt="增值电信业务经营许可证" style="width:22px; margin-top: 10px;" src="PikPng.com_facebook-circle-icon-png_5902093.png">
+    </a>
+    <a href="https://beian.miit.gov.cn/" style="text-decoration: none;">Facebook Page</a><br><br>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  function changeImage(thumb) {
+    const mainImage = document.getElementById('mainProductImage');
+    mainImage.src = thumb.src;
+
+    // Optional: highlight active thumbnail
+    document.querySelectorAll('.thumbnail').forEach(img => img.classList.remove('active'));
+    thumb.classList.add('active');
+  }
+</script>
+
+</body></html>
