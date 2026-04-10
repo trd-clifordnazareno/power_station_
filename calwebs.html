@@ -14,12 +14,43 @@ body {
 }
 
 
-  /* GLOBAL CONTAINER */
+/* GLOBAL CONTAINER */
 .container {
   width: 100%;
   max-width: 900px;
   margin: auto;
   padding: 0 15px;
+}
+
+/* FIX HEADER */
+header {
+  /*background: #020617;*/
+}
+
+/* FIX HERO */
+.hero {
+  text-align: center;
+  padding: 30px 0;
+}
+
+/* FIX MAIN */
+.main {
+  display: grid;
+  gap: 20px;
+}
+
+/* FIX FOOTER */
+.footer {
+  background: #020617;
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .main {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* HEADER */
@@ -231,7 +262,11 @@ td {
 </head>
 
 
-  <section>
+
+
+<body>
+
+<section>
   <div class="container">
     <header>
   <h1>⚡ Power<span>Calc</span></h1>
@@ -244,10 +279,6 @@ td {
 </section>
   </div>
 </section>
-
-<body>
-
-
 
 <div class="main">
 
