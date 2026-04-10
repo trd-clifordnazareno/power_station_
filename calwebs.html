@@ -319,14 +319,47 @@ td {
 <input type="number" id="watts" placeholder="Enter device watt (optional)" style="width:94%">
     <button onclick="calculate()">Calculate</button>
     <div class="result" id="result"></div>
-  </div>
+  
 
-</div>
+
 
 <!-- MODAL -->
 <div id="modal" class="modal" onclick="closeModal()">
   <img id="modalImg">
 </div>
+
+
+
+</body>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <h2>⚡ PowerCalc</h2>
+      <p>Simple tool to estimate your power station usage anytime.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#">Home</a>
+      <a href="#">Models</a>
+      <a href="#">Calculator</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Email: support@powercalc.com</p>
+      <p>Location: Cebu City Philippines</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © <span id="year"></span> PowerCalc. All rights reserved.
+  </div>
+</footer>
+</html>
+
 
 <script>
 const models = {
@@ -451,33 +484,3 @@ const deviceName = document.getElementById("device").options[
 document.getElementById("result").innerHTML =
   "⏱️ " + hours.toFixed(2) + " hours (" + deviceName + ")";
 </script>
-
-</body>
-<footer class="footer">
-  <div class="footer-container">
-
-    <div class="footer-brand">
-      <h2>⚡ PowerCalc</h2>
-      <p>Simple tool to estimate your power station usage anytime.</p>
-    </div>
-
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <a href="#">Home</a>
-      <a href="#">Models</a>
-      <a href="#">Calculator</a>
-    </div>
-
-    <div class="footer-contact">
-      <h4>Contact</h4>
-      <p>Email: support@powercalc.com</p>
-      <p>Location: Cebu City Philippines</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © <span id="year"></span> PowerCalc. All rights reserved.
-  </div>
-</footer>
-</html>
