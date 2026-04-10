@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Station Calculator</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+
+/* HEADER */
+header {
+  background: #020617;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+header span {
+  color: #22c55e;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.hero p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* LAYOUT */
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 15px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+/* MAIN IMAGE */
+.main-img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #020617;
+  border-radius: 10px;
+}
+
+/* GALLERY */
+.gallery {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto;
+}
+
+.gallery img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.gallery img:hover {
+  border: 2px solid #22c55e;
+}
+
+/* FORM */
+select, input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+td {
+  padding: 6px;
+  border-bottom: 1px solid #334155;
+}
+
+.label {
+  color: #94a3b8;
+}
+
+/* RESULT */
+.result {
+  margin-top: 15px;
+  text-align: center;
+  color: #38bdf8;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+
+.modal img {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.modal.close {
+  cursor: pointer;
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .main {
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+    margin: auto;
+  }
+}
+
+
+/* FOOTER */
+.footer {
+  background: #020617;
+  margin-top: 30px;
+  padding: 20px 15px;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.footer h2, .footer h4 {
+  margin: 0 0 8px;
+}
+
+.footer p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.footer a {
+  display: block;
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* DESKTOP FOOTER */
+@media(min-width: 768px){
+  .footer-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 900px;
+    margin: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚡ Power<span>Calc</span></h1>
+  <div>Battery Tool</div>
+</header>
+
+<section class="hero">
+  <h2>Power Station Usage Calculator</h2>
+  <p>Select your power station and calculate how long it can run your device</p>
+</section>
+
+<div class="main">
+
+  <!-- LEFT -->
+  <div class="card">
+    <img id="mainImage" class="main-img">
+
+    <div class="gallery" id="gallery"></div>
+
+    <select id="station" onchange="updateModel()">
+      <option value="model1">Model 1 - 300W</option>
+      <option value="model2">Model 2 - 500W</option>
+      <option value="model3">Model 3 - 1000W</option>
+    </select>
+
+    <table>
+      <tr><td class="label">Capacity</td><td id="cap"></td></tr>
+      <tr><td class="label">Output</td><td id="out"></td></tr>
+      <tr><td class="label">Voltage</td><td id="volt"></td></tr>
+      <tr><td class="label">Battery</td><td id="battery"></td></tr>
+    </table>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="card">
+    <h3>Calculate Usage</h3>
+    <label>Select Device:</label></br>
+<select id="device" onchange="setDeviceWatts()">
+  <option value="">-- Choose Device -- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
+  <option value="30">Phone Charger (30W)</option>
+  <option value="60">Laptop (60W)</option>
+  <option value="100">TV (100W)</option>
+  <option value="10">LED Light (10W)</option>
+  <option value="150">Electric Fan (150W)</option>
+  <option value="300">Rice Cooker (300W)</option>
+</select>
+</br></br><label>Or Enter Watts Manually:</label></br>
+<input type="number" id="watts" placeholder="Enter device watt (optional)" style="width:94%">
+    <button onclick="calculate()">Calculate</button>
+    <div class="result" id="result"></div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
+
+<script>
+const models = {
+  model1: {
+    capacity: 200,
+    output: "300W",
+    voltage: "220V",
+    battery: "Lithium",
+    images: [
+      "https://powersta.netlify.app/ps300/3.jpg",
+      "https://powersta.netlify.app/ps300/2.jpg",
+      "https://powersta.netlify.app/ps300/8.jpg",
+      "https://powersta.netlify.app/ps300/8.jpg",
+      "https://powersta.netlify.app/ps300/3.jpg"
+    ]
+  },
+  model2: {
+    capacity: 500,
+    output: "500W",
+    voltage: "220V",
+    battery: "Lithium",
+    images: [
+      "https://powersta.netlify.app/ps300/2.jpg",
+      "https://powersta.netlify.app/ps300/8.jpg",
+      "https://powersta.netlify.app/ps300/3.jpg",
+      "https://powersta.netlify.app/ps300/8.jpg",
+      "https://powersta.netlify.app/ps300/3.jpg"
+    ]
+  },
+  model3: {
+    capacity: 1000,
+    output: "1000W",
+    voltage: "220V",
+    battery: "LiFePO4",
+    images: [
+    "https://powersta.netlify.app/ps300/8.jpg",
+      "https://powersta.netlify.app/ps300/2.jpg",
+      "https://powersta.netlify.app/ps300/3.jpg",
+      "https://powersta.netlify.app/ps300/8.jpg",
+      "https://powersta.netlify.app/ps300/3.jpg"
+    ]
+  }
+};
+
+function updateModel() {
+  const selected = document.getElementById("station").value;
+  const m = models[selected];
+
+  document.getElementById("cap").innerText = m.capacity + "Wh";
+  document.getElementById("out").innerText = m.output;
+  document.getElementById("volt").innerText = m.voltage;
+  document.getElementById("battery").innerText = m.battery;
+
+  // MAIN IMAGE
+  document.getElementById("mainImage").src = m.images[0];
+
+  // GALLERY
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+
+  m.images.forEach(img => {
+    const image = document.createElement("img");
+    image.src = img;
+
+    image.onclick = () => openModal(img);
+
+    gallery.appendChild(image);
+  });
+}
+
+function calculate() {
+  const selected = document.getElementById("station").value;
+  const m = models[selected];
+  const watts = document.getElementById("watts").value;
+
+  if (!watts || watts <= 0) {
+    document.getElementById("result").innerHTML = "Enter valid watts";
+    return;
+  }
+
+  const hours = m.capacity / watts;
+
+  document.getElementById("result").innerHTML =
+    "⏱️ " + hours.toFixed(2) + " hours";
+}
+
+/* MODAL */
+function openModal(src) {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+updateModel();
+document.getElementById("year").textContent = new Date().getFullYear();
+function setDeviceWatts() {
+  const deviceWatts = document.getElementById("device").value;
+  
+  if (deviceWatts) {
+    document.getElementById("watts").value = deviceWatts;
+  }
+}
+
+
+function setDeviceWatts() {
+  const deviceWatts = document.getElementById("device").value;
+
+  if (deviceWatts) {
+    document.getElementById("watts").value = deviceWatts;
+    calculate(); // auto run
+  }159
+}
+
+
+const deviceName = document.getElementById("device").options[
+  document.getElementById("device").selectedIndex
+].text;
+
+document.getElementById("result").innerHTML =
+  "⏱️ " + hours.toFixed(2) + " hours (" + deviceName + ")";
+</script>
+
+</body>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <h2>⚡ PowerCalc</h2>
+      <p>Simple tool to estimate your power station usage anytime.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#">Home</a>
+      <a href="#">Models</a>
+      <a href="#">Calculator</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Email: support@powercalc.com</p>
+      <p>Location: Cebu City Philippines</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © <span id="year"></span> PowerCalc. All rights reserved.
+  </div>
+</footer>
+</html>
