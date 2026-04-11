@@ -282,10 +282,22 @@ td {
     <div class="result" id="result"></div>
 	<hr style="margin-top:20px; border-color:#334155;">
 
-<h3>Compare Models</h3>
+<div style="background: #646474; padding: 10%;">
+  <h3>Compare Models</h3>
 
-<label>Select Compare Model:</label>
+<label>Select Model 1:</label>
 <select id="compareModel">
+  <option value="model1">Model 1 - 300W</option>
+  <option value="model2">Model 2 - 500W</option>
+  <option value="model3">Model 3 - 1000W</option>
+</select>
+</br></br>
+
+
+
+
+<label>Select Model 2:</label>
+<select id="compareModel0">
   <option value="model1">Model 1 - 300W</option>
   <option value="model2">Model 2 - 500W</option>
   <option value="model3">Model 3 - 1000W</option>
@@ -294,6 +306,9 @@ td {
 <button onclick="compareModels()">Compare</button>
 
 <div id="compareResult"></div>
+
+
+</div>
 
 
 <hr style="margin-top:20px; border-color:#334155;">
@@ -444,10 +459,10 @@ year.innerText = new Date().getFullYear();
 
 
 function compareModels() {
-  const modelA = models[station.value];
+  const modelA = models[compareModel0.value];
   const modelB = models[compareModel.value];
 
-  if (station.value === compareModel.value) {
+  if (compareModel0.value === compareModel.value) {
     compareResult.innerHTML = "⚠️ Choose different models to compare";
     return;
   }
@@ -456,7 +471,7 @@ function compareModels() {
     <table class="compare-table">
       <tr>
         <td></td>
-        <td class="compare-title">${station.options[station.selectedIndex].text}</td>
+        <td class="compare-title">${compareModel0.options[compareModel0.selectedIndex].text}</td>
         <td class="compare-title">${compareModel.options[compareModel.selectedIndex].text}</td>
       </tr>
 
