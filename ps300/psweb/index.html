@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Station Calculator</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+
+
+/* GLOBAL CONTAINER */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* FIX HEADER */
+header {
+  /*background: #020617;*/
+}
+
+/* FIX HERO */
+.hero {
+  text-align: center;
+  padding: 30px 0;
+}
+
+/* FIX MAIN */
+.main {
+  display: grid;
+  gap: 20px;
+}
+
+/* FIX FOOTER */
+.footer {
+  background: #020617;
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* HEADER */
+header {
+  /*background: #020617;*/
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+header span {
+  color: #22c55e;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.hero p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* LAYOUT */
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 15px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+/* MAIN IMAGE */
+.main-img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #020617;
+  border-radius: 10px;
+}
+
+/* GALLERY */
+.gallery {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto;
+}
+
+.gallery img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.gallery img:hover {
+  border: 2px solid #22c55e;
+}
+
+/* FORM */
+select, input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+td {
+  padding: 6px;
+  border-bottom: 1px solid #334155;
+}
+
+.label {
+  color: #94a3b8;
+}
+
+/* RESULT */
+.result {
+  margin-top: 15px;
+  text-align: center;
+  color: #38bdf8;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+
+.modal img {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.modal.close {
+  cursor: pointer;
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .main {
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+    margin: auto;
+  }
+}
+
+
+/* FOOTER */
+.footer {
+  background: #020617;
+  margin-top: 30px;
+  padding: 20px 15px;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.footer h2, .footer h4 {
+  margin: 0 0 8px;
+}
+
+.footer p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.footer a {
+  display: block;
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* DESKTOP FOOTER */
+@media(min-width: 768px){
+  .footer-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 900px;
+    margin: auto;
+  }
+}
+
+
+.compare-table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.compare-table td {
+  border: 1px solid #334155;
+  padding: 8px;
+  text-align: center;
+}
+
+.compare-title {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+
+.main-img {
+  cursor: pointer;
+}
+</style>
+</head>
+
+
+<section>
+  <div class="container">
+    <header>
+  <h1>⚡ Power<span>Calc</span></h1>
+  <!--<div>Battery Tool</div>-->
+</header>
+
+<section class="hero">
+  <h2>Power Station Usage Calculator</h2>
+  <p>Select your power station and calculate how long it can run your device</p>
+</section>
+  </div>
+</section>
+
+<body>
+
+
+
+<div class="main">
+
+  <!-- LEFT -->
+  <div class="card">
+    <img id="mainImage" class="main-img" onclick="openModal(this.src)">
+
+    <div class="gallery" id="gallery"></div>
+
+    
+
+    <table>
+      <tr><td class="label">Capacity</td><td id="cap"></td></tr>
+      <tr><td class="label">Output</td><td id="out"></td></tr>
+      <tr><td class="label">Voltage</td><td id="volt"></td></tr>
+      <tr><td class="label">Battery</td><td id="battery"></td></tr>
+      <tr><td class="label">Charging Hours</td><td id="charging"></td></tr>
+      <tr><td class="label">Wave Form</td><td id="wave"></td></tr>
+      <tr><td class="label">Frequency</td><td id="frequency"></td></tr>
+    </table>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="card">
+    <h3>Calculate Usage</h3>
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+      .model-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.model-selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #020617;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.model-selected img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.model-options {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background: #020617;
+  border-radius: 6px;
+  margin-top: 5px;
+  z-index: 10;
+  /*background-color: #607d8b;*/
+  border-color: white;
+  border-style: solid;
+}
+
+.model-options div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.model-options div:hover {
+  background: #1e293b;
+}
+
+.model-options img {
+  width: 40px;
+  height: 40px;
+}
+    </style>
+    
+    
+    <div class="model-dropdown">
+  <div class="model-selected" onclick="toggleModelDropdown()">
+    <img id="selectedImg" src="1501.jpg">
+    <span id="selectedText">Model 1 - 150W</span>
+  </div>
+
+  <div class="model-options" id="modelOptions">
+    <div onclick="selectModel('model1', '1501.jpg', 'Model 1 - 150W')">
+      <img src="1501.jpg"> Model 1 - 150W
+    </div>
+    <div onclick="selectModel('model2', 'https://powersta.netlify.app/ps300/8.jpg', 'Model 2 - 350W')">
+      <img src="https://powersta.netlify.app/ps300/8.jpg"> Model 2 - 350W
+    </div>
+    <div onclick="selectModel('model3', '3002.jpg', 'Model 3 - 300W')">
+      <img src="3002.jpg"> Model 3 - 300W
+    </div>
+    <div onclick="selectModel('model4', '5.jpg', 'Model 4 - 300W')">
+      <img src="5.jpg"> Model 4 - 300W
+    </div>
+    <div onclick="selectModel('model5', 'a3003.jpg', 'Model 5 - 300W')">
+      <img src="a3003.jpg"> Model 5 - 300W
+    </div>
+    <div onclick="selectModel('model6', '3901.jpg', 'Model 6 - 500W')">
+      <img src="3901.jpg"> Model 6 - 500W
+    </div>
+  </div>
+</div>
+
+
+<!-- hidden real select (keeps your JS working) -->
+<select id="station" style="display:none;" onchange="updateModel()">
+  <option value="model1">Model 1 - 150W</option>
+  <option value="model2">Model 2 - 350W</option>
+  <option value="model3">Model 3 - 300W</option>
+  <option value="model4">Model 4 - 300W</option>
+  <option value="model5">Model 5 - 300W</option>
+  <option value="model6">Model 6 - 500W</option>
+</select>
+
+
+
+
+    <!--<select id="station" onchange="updateModel()">
+      <option value="model1">Model 1 - 150W</option>
+      <option value="model2">Model 2 - 350W</option>
+      <option value="model3">Model 3 - 300W</option>
+      <option value="model4">Model 4 - 300W</option>
+      <option value="model5">Model 5 - 300W</option>
+    </select>-->
+    </br></br>
+
+
+
+    <!--<label>Select Device:</label></br>
+<select id="device" onchange="setDeviceWatts()">
+  <option value="">-- Choose Device -- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
+  <option value="30">Phone Charger (30W)</option>
+  <option value="60">Laptop (60W)</option>
+  <option value="100">TV (100W)</option>
+  <option value="10">LED Light (10W)</option>
+  <option value="150">Electric Fan (150W)</option>
+  <option value="300">Rice Cooker (300W)</option>
+
+
+  <option value="5">LED Bulb - 5W</option>
+  <option value="10">LED Bulb - 10W</option>
+  <option value="15">LED Bulb - 15W</option>
+  <option value="20">Fluorescent Lamp - 20W</option>
+  <option value="18">CFL Bulb - 18W</option>
+  <option value="3">Night Light - 3W</option>
+  <option value="25">Desk Lamp - 25W</option>
+  <option value="36">Tube Light - 36W</option>
+  <option value="100">Street Light LED - 100W</option>
+  <option value="200">Flood Light - 200W</option>
+
+  <option value="75">Ceiling Fan - 75W</option>
+  <option value="50">Table Fan - 50W</option>
+  <option value="60">Stand Fan - 60W</option>
+  <option value="40">Exhaust Fan - 40W</option>
+  <option value="10">Mini Fan USB - 10W</option>
+  <option value="150">Industrial Fan (Small) - 150W</option>
+  <option value="55">Wall Fan - 55W</option>
+  <option value="80">Box Fan - 80W</option>
+  <option value="20">Clip Fan - 20W</option>
+  <option value="45">Tower Fan - 45W</option>
+
+  <option value="65">Laptop - 65W</option>
+  <option value="45">Mini Laptop - 45W</option>
+  <option value="200">Desktop (Low Power) - 200W</option>
+  <option value="30">LED Monitor - 30W</option>
+  <option value="50">LCD Monitor - 50W</option>
+  <option value="50">Printer (Inkjet) - 50W</option>
+  <option value="10">WiFi Router - 10W</option>
+  <option value="12">Modem - 12W</option>
+  <option value="25">Network Switch - 25W</option>
+  <option value="40">NAS Storage - 40W</option>
+
+  <option value="10">Phone Charger - 10W</option>
+  <option value="25">Fast Charger - 25W</option>
+  <option value="20">Tablet Charger - 20W</option>
+  <option value="18">Power Bank Charger - 18W</option>
+  <option value="5">Smart Watch Charger - 5W</option>
+  <option value="25">Camera Charger - 25W</option>
+  <option value="60">Drone Charger - 60W</option>
+  <option value="15">Bluetooth Speaker - 15W</option>
+  <option value="5">Headphones (Charging) - 5W</option>
+  <option value="100">Game Console (Idle) - 100W</option>
+
+  <option value="40">TV LED 24&quot; - 40W</option>
+  <option value="50">TV LED 32&quot; - 50W</option>
+  <option value="70">TV LED 40&quot; - 70W</option>
+  <option value="10">Smart TV Box - 10W</option>
+  <option value="150">Projector (Mini) - 150W</option>
+  <option value="60">Sound Bar - 60W</option>
+  <option value="100">Speaker System - 100W</option>
+  <option value="10">CCTV Camera - 10W</option>
+  <option value="30">DVR/NVR - 30W</option>
+  <option value="10">Doorbell Camera - 10W</option>
+
+  <option value="80">Mini Fridge - 80W</option>
+  <option value="150">Refrigerator (Efficient) - 150W</option>
+  <option value="200">Electric Fan Heater - 200W</option>
+  <option value="30">Humidifier - 30W</option>
+  <option value="50">Air Purifier - 50W</option>
+  <option value="200">Dehumidifier (Small) - 200W</option>
+  <option value="100">Water Dispenser (Cool only) - 100W</option>
+  <option value="150">Ice Maker (Small) - 150W</option>
+  <option value="100">Electric Blanket - 100W</option>
+  <option value="60">Heating Pad - 60W</option>
+
+  <option value="300">Rice Cooker (Small) - 300W</option>
+  <option value="200">Slow Cooker - 200W</option>
+  <option value="300">Blender - 300W</option>
+  <option value="250">Juicer - 250W</option>
+  <option value="150">Hand Mixer - 150W</option>
+  <option value="200">Electric Egg Cooker - 200W</option>
+  <option value="300">Mini Coffee Maker - 300W</option>
+  <option value="300">Toaster (Low Power) - 300W</option>
+  <option value="250">Food Processor (Small) - 250W</option>
+  <option value="100">Milk Frother - 100W</option>
+
+  <option value="5">Electric Toothbrush - 5W</option>
+  <option value="10">Hair Clipper - 10W</option>
+  <option value="10">Electric Shaver - 10W</option>
+  <option value="30">Water Flosser - 30W</option>
+  <option value="300">Face Steamer - 300W</option>
+  <option value="200">Foot Spa - 200W</option>
+  <option value="50">Massage Gun - 50W</option>
+  <option value="15">Essential Oil Diffuser - 15W</option>
+  <option value="50">UV Sterilizer - 50W</option>
+  <option value="5">Smart Scale - 5W</option>
+
+  <option value="300">Electric Drill (Small) - 300W</option>
+  <option value="60">Soldering Iron - 60W</option>
+  <option value="40">Glue Gun - 40W</option>
+  <option value="100">Mini Air Pump - 100W</option>
+  <option value="120">Car Vacuum - 120W</option>
+  <option value="150">Battery Charger - 150W</option>
+  <option value="20">Solar Controller - 20W</option>
+  <option value="30">Inverter Idle - 30W</option>
+  <option value="200">UPS (Small) - 200W</option>
+  <option value="300">Portable Power Station Output - 300W</option>
+</select>-->
+
+
+<style>
+  .device-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.device-selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #020617;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.device-selected img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.device-options {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background: #020617;
+  border-radius: 6px;
+  margin-top: 5px;
+  z-index: 10;
+  max-height: 370px;
+  overflow-y: auto;
+  /*background-color: #607d8b;*/
+  border-color: white;
+  border-style: solid;
+}
+
+.device-options div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.device-options div:hover {
+  background: #1e293b;
+}
+
+.device-options img {
+  width: 40px;
+  height: 40px;
+}
+</style>
+
+
+<label>Select Device:</label></br>
+
+<div class="device-dropdown">
+  <div class="device-selected" onclick="toggleDeviceDropdown()">
+    <img id="selectedDeviceImg" src="image/BoxFan.jpg">
+    <span id="selectedDeviceText">-- Choose Device --</span>
+  </div>
+
+  <div class="device-options" id="deviceOptions">
+
+    <div onclick="selectDevice(80, 'image/BoxFan.jpg', 'Box Fan (80W)')">
+      <img src="image/BoxFan.jpg"> Box Fan (80W)
+    </div>
+
+    <div onclick="selectDevice(10, 'image/bulb.jpg', 'Bulb (10W)')">
+      <img src="image/bulb.jpg"> Bulb (10W)
+    </div>
+
+    <div onclick="selectDevice(18, 'image/CeilingFan.jpg', 'Ceiling Fan (18W)')">
+      <img src="image/CeilingFan.jpg"> Ceiling Fan (18W)
+    </div>
+
+    <div onclick="selectDevice(18, 'image/CFLBulb.jpg', 'CFL Bulb (18W)')">
+      <img src="image/CFLBulb.jpg"> CFL Bulb (18W)
+    </div>
+
+    <div onclick="selectDevice(20, 'image/ClipFan.jpg', 'Clip Fan (20W)')">
+      <img src="image/ClipFan.jpg"> Clip Fan (150W)
+    </div>
+
+    <div onclick="selectDevice(25, 'image/DeskLamp.jpg', 'Desk Lamp (25W)')">
+      <img src="image/DeskLamp.jpg"> Desk Lamp (25W)
+    </div>
+    
+    <div onclick="selectDevice(150, 'image/Desktop.jpg', 'Desktop (150W)')">
+      <img src="image/Desktop.jpg"> Desktop (150W)
+    </div>
+    
+    <div onclick="selectDevice(70, 'image/desktopfan.jpg', 'Desktop Fan (70W)')">
+      <img src="image/desktopfan.jpg"> Desk Fan (70W)
+    </div>
+
+    <div onclick="selectDevice(40, 'image/ExhaustFan.jpg', 'Exhaust Fan (40W)')">
+      <img src="image/ExhaustFan.jpg"> Exhaust Fan (40W)
+    </div>
+
+    <div onclick="selectDevice(20, 'image/FastCharger.jpg', 'Fast Charger (20W)')">
+      <img src="image/FastCharger.jpg"> Fast Charger (20W)
+    </div>
+
+    <div onclick="selectDevice(15, 'image/florecent.jpg', 'Florecent (15W)')">
+      <img src="image/florecent.jpg"> florecent (15W)
+    </div>
+
+    <div onclick="selectDevice(150, 'image/IndustrialFan.jpg', 'Industrial Fan (150W)')">
+      <img src="image/IndustrialFan.jpg"> Industrial Fan (150W)
+    </div>
+
+    <div onclick="selectDevice(65, 'image/laptop.jpg', 'Laptop (65W)')">
+      <img src="image/laptop.jpg"> Laptop (65W)
+    </div>
+
+
+
+
+
+
+
+
+    <div onclick="selectDevice(45, 'image/laptop65.jpg', 'Laptop (45W)')">
+      <img src="image/laptop65.jpg"> Laptop (45W)
+    </div>
+
+    <div onclick="selectDevice(35, 'image/LCDMonitor.jpg', 'LCD Monitor (35W)')">
+      <img src="image/LCDMonitor.jpg"> LCD Monitor (35W)
+    </div>
+
+    <div onclick="selectDevice(19, 'image/ledbulb.jpg', 'Led Bulb (19W)')">
+      <img src="image/ledbulb.jpg"> Led Bulb (19W)
+    </div>
+
+    <div onclick="selectDevice(5, 'image/ledbulbsmall.jpeg', 'Led Bulb Small (5W)')">
+      <img src="image/ledbulbsmall.jpeg"> Led Bulb Small (5W)
+    </div>
+
+    <div onclick="selectDevice(30, 'image/ledbulbsquare.jpg', 'Led Lights (30W)')">
+      <img src="image/ledbulbsquare.jpg"> Led Lights (30W)
+    </div>
+
+    <div onclick="selectDevice(35, 'image/LEDMonitor.jpg', 'LED Monitor (35W)')">
+      <img src="image/LEDMonitor.jpg"> LED Monitor (35W)
+    </div>
+
+    <div onclick="selectDevice(1, 'image/MiniFanUSB.jpg', 'Mini Fan USB (1W)')">
+      <img src="image/MiniFanUSB.jpg"> Mini Fan USB (1W)
+    </div>
+
+    <div onclick="selectDevice(10, 'image/Modem.jpg', 'Modem (10W)')">
+      <img src="image/Modem.jpg"> Modem (10W)
+    </div>
+
+
+
+
+
+
+
+
+    <div onclick="selectDevice(40, 'image/NASStorage.jpg', 'NAS Storage (40W)')">
+      <img src="image/NASStorage.jpg"> NAS Storage (40W)
+    </div>
+
+    <div onclick="selectDevice(25, 'image/NetworkSwitch.jpg', 'Network Switch (25W)')">
+      <img src="image/NetworkSwitch.jpg"> Network Switch (25W)
+    </div>
+
+    <div onclick="selectDevice(10, 'image/NightLight.jpg', 'Night Light (10W)')">
+      <img src="image/NightLight.jpg"> Night Light (10W)
+    </div>
+
+    <div onclick="selectDevice(10, 'image/phonecharger.jpg', 'Phone Charger (10W)')">
+      <img src="image/phonecharger.jpg"> Phone Charger (10W)
+    </div>
+
+    <div onclick="selectDevice(45, 'image/PhoneCharger45.jpg', 'Phone Charger (45W)')">
+      <img src="image/PhoneCharger45.jpg"> Phone Charger (45W)
+    </div>
+
+    <div onclick="selectDevice(18, 'image/PowerBankCharger.jpg', 'Power Bank Charger (18W)')">
+      <img src="image/PowerBankCharger.jpg"> Power Bank Charger (18W)
+    </div>
+
+    <div onclick="selectDevice(50, 'image/Printer.jpg', 'Printer (50W)')">
+      <img src="image/Printer.jpg"> Printer (50W)
+    </div>
+
+  </div>
+</div>
+
+<!-- hidden original select (IMPORTANT for your JS) -->
+<select id="device" style="display:none;" onchange="setDeviceWatts()">
+  <option value="">-- Choose Device --</option>
+  <option value="80">Box Fan (80W)</option>
+  <option value="10">Bulb (10W)</option>
+  <option value="18">Ceiling Fan (18W)</option>
+  <option value="18">CFL Bulb (18W)</option>
+  <option value="20">Clip Fan (20W)</option>
+  <option value="25">Desk Lamp (25W)</option>
+
+
+  <option value="150">Desktop (150W)</option>
+  <option value="70">Desktop Fan (70W)</option>
+  <option value="40">Exhaust Fan (40W)</option>
+  <option value="20">Fast Charger (20W)</option>
+  <option value="15">Florecent (15W)</option>
+  <option value="150">Industrial Fan (150W)</option>
+  <option value="65">Laptop (65W)</option>
+
+
+  <option value="45">Laptop (45W)</option>
+  <option value="35">LCD Monitor (35W)</option>
+  <option value="19">Led Bulb (19W)</option>
+  <option value="5">Led Bulb Small (5W)</option>
+  <option value="30">Led Lights (30W)</option>
+  <option value="35">LED Monitor (35W)</option>
+  <option value="1">Mini Fan USB (1W)</option>
+  <option value="10">Modem (10W)</option>
+
+
+   <option value="40">NAS Storage (40W)</option>
+    <option value="25">Network Switch (25W)</option>
+     <option value="10">Night Light (10W)</option>
+      <option value="10">Phone Charger (10W)</option>
+       <option value="45">Phone Charger (45W)</option>
+        <option value="18">Power Bank Charger (18W)</option>
+         <option value="50">Printer (50W)</option>
+
+
+  
+
+  <!--<option value="30">Phone Charger (30W)</option>
+  <option value="60">Laptop (60W)</option>
+  <option value="100">TV (100W)</option>
+  <option value="10">LED Light (10W)</option>
+  <option value="150">Electric Fan (150W)</option>
+  <option value="300">Rice Cooker (300W)</option>-->
+</select>
+</br></br><label>Or Enter Watts Manually:</label></br>
+<input type="number" id="watts" placeholder="Enter device watt (optional)" style="width:94%">
+    <button onclick="calculate()">Calculate</button>
+    <div class="result" id="result"></div>
+
+
+    <hr style="margin-top:20px; border-color:#334155;">
+</br>
+
+    
+    
+    <div style="/*background: #646474;*/ padding: 10%;">
+  <h3>Compare Models</h3>
+
+<!--<label>Select Model 1:</label>
+<select id="compareModel">
+  <option value="model1">Model 1 - 150W</option>
+  <option value="model2">Model 2 - 350W</option>
+  <option value="model3">Model 3 - 300W</option>
+  <option value="model4">Model 3 - 300W</option>
+  <option value="model5">Model 5 - 300W</option>
+</select>
+</br></br>
+
+
+
+
+<label>Select Model 2:</label>
+<select id="compareModel0">
+  <option value="model1">Model 1 - 150W</option>
+  <option value="model2">Model 2 - 350W</option>
+  <option value="model3">Model 3 - 300W</option>
+  <option value="model4">Model 3 - 300W</option>
+  <option value="model5">Model 5 - 300W</option>
+</select>-->
+
+
+<style>
+  .compare-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.compare-selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #020617;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.compare-selected img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.compare-options {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background: #020617;
+  border-radius: 6px;
+  margin-top: 5px;
+  z-index: 10;
+  /*background-color: #607d8b;*/
+  border-color: white;
+  border-style: solid;
+}
+
+.compare-options div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.compare-options div:hover {
+  background: #1e293b;
+}
+
+.compare-options img {
+  width: 40px;
+  height: 40px;
+}
+</style>
+<label>Select Model 1:</label>
+
+<div class="compare-dropdown">
+  <div class="compare-selected" onclick="toggleCompareDropdown('cmp1')">
+    <img id="cmp1Img" src="1501.jpg">
+    <span id="cmp1Text">Model 1 - 150W</span>
+  </div>
+
+  <div class="compare-options" id="cmp1Options">
+    <div onclick="selectCompare('cmp1','model1','1501.jpg','Model 1 - 150W')">
+      <img src="1501.jpg"> Model 1 - 150W
+    </div>
+    <div onclick="selectCompare('cmp1','model2','https://powersta.netlify.app/ps300/8.jpg','Model 2 - 350W')">
+      <img src="https://powersta.netlify.app/ps300/8.jpg"> Model 2 - 350W
+    </div>
+    <div onclick="selectCompare('cmp1','model3','3002.jpg','Model 3 - 300W')">
+      <img src="3002.jpg"> Model 3 - 300W
+    </div>
+    <div onclick="selectCompare('cmp1','model5','1.jpg','Model 4 - 300W')">
+      <img src="5.jpg"> Model 4 - 300W
+    </div>
+    <div onclick="selectCompare('cmp1','model5','a3003.jpg','Model 5 - 300W')">
+      <img src="a3003.jpg"> Model 5 - 300W
+    </div>
+    <div onclick="selectCompare('cmp1','model6','3901.jpg','Model 6 - 500W')">
+      <img src="3901.jpg"> Model 6 - 500W
+    </div>
+  </div>
+</div>
+
+</br></br>
+
+<label>Select Model 2:</label>
+
+<div class="compare-dropdown">
+  <div class="compare-selected" onclick="toggleCompareDropdown('cmp2')">
+    <img id="cmp2Img" src="1501.jpg">
+    <span id="cmp2Text">Model 1 - 150W</span>
+  </div>
+
+  <div class="compare-options" id="cmp2Options">
+    <div onclick="selectCompare('cmp2','model1','1501.jpg','Model 1 - 150W')">
+      <img src="1501.jpg"> Model 1 - 150W
+    </div>
+    <div onclick="selectCompare('cmp2','model2','https://powersta.netlify.app/ps300/8.jpg','Model 2 - 350W')">
+      <img src="https://powersta.netlify.app/ps300/8.jpg"> Model 2 - 350W
+    </div>
+    <div onclick="selectCompare('cmp2','model3','3002.jpg','Model 3 - 300W')">
+      <img src="3002.jpg"> Model 3 - 300W
+    </div>
+    <div onclick="selectCompare('cmp2','model4','5.jpg','Model 4 - 300W')">
+      <img src="5.jpg"> Model 4 - 300W
+    </div>
+    <div onclick="selectCompare('cmp2','model5','a3003.jpg','Model 5 - 300W')">
+      <img src="a3003.jpg"> Model 5 - 300W
+    </div>
+    <div onclick="selectCompare('cmp2','model6','3901.jpg','Model 6 - 500W')">
+      <img src="3901.jpg"> Model 6 - 500W
+    </div>
+  </div>
+</div>
+
+<!-- hidden selects (VERY IMPORTANT for your JS) -->
+<select id="compareModel" style="display:none;">
+  <option value="model1">Model 1</option>
+  <option value="model2">Model 2</option>
+  <option value="model3">Model 3</option>
+  <option value="model4">Model 4</option>
+  <option value="model5">Model 5</option>
+  <option value="model6">Model 6</option>
+</select>
+
+<select id="compareModel0" style="display:none;">
+  <option value="model1">Model 1</option>
+  <option value="model2">Model 2</option>
+  <option value="model3">Model 3</option>
+  <option value="model4">Model 4</option>
+  <option value="model5">Model 5</option>
+  <option value="model6">Model 6</option>
+</select>
+
+<button onclick="compareModels()">Compare</button>
+
+<div id="compareResult"></div>
+
+
+</div>
+
+
+<hr style="margin-top:20px; border-color:#334155;">
+  
+
+
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
+
+
+
+</body>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <h2>⚡ PowerCalc</h2>
+      <p>Simple tool to estimate your power station usage anytime.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      
+      <a href="#">Calculator</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Phone: 09234648295</p>
+      <p>Location: Cebu City Philippines</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © <span id="year"></span> PowerCalc. All rights reserved.
+  </div>
+</footer>
+</html>
+
+
+<script>
+const models = {
+  model1: {
+    capacity: 140,
+    output: "150W",
+    voltage: "220V",
+    battery: "Lead Acid",
+    charging: "7 - 8 Hours",
+    wave: "Modified SineWave",
+    frequency: "50/60 Hz",
+    images: [
+      "1501.jpg",
+      "1502.jpg",
+      "1503.jpg",
+      "1504.jpg",
+      "1505.jpg"
+    ]
+  },
+  model2: {
+    capacity: 224,
+    output: "350W",
+    voltage: "220V",
+    battery: "Lithium",
+    charging: "3 - 4 Hours",
+    wave: "Modified SineWave",
+    frequency: "50/60 Hz",
+    images: [
+      "350w1.jpg",
+      "https://powersta.netlify.app/ps300/2.jpg",
+      "https://powersta.netlify.app/ps300/8.jpg",
+      "350w2.jpg",
+      "https://powersta.netlify.app/ps300/3.jpg"
+    ]
+  },
+  model3: {
+    capacity: 315,
+    output: "300W",
+    voltage: "220V",
+    battery: "LiFePO4",
+    charging: "7 - 8 Hours",
+    wave: "Corrected SineWave",
+    frequency: "50/60 Hz",
+    images: [
+    "3001.jpg",
+      "3002.jpg",
+      "3003.jpg",
+      "3004.jpg",
+      "3005.jpg"
+    ]
+  },
+  model4: {
+    capacity: 318,
+    output: "300W",
+    voltage: "220V",
+    battery: "LiFePO4",
+    charging: "7 - 8 Hours",
+    wave: "Corrected SineWave",
+    frequency: "50/60 Hz",
+    images: [
+    "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg"
+    ]
+  },
+  model5: {
+    capacity: 159,
+    output: "300W",
+    voltage: "220V",
+    battery: "Lithium",
+    charging: "7 - 8 Hours",
+    wave: "Modified SineWave",
+    frequency: "50/60 Hz",
+    images: [
+    "a3001.jpg",
+      "a3002.jpg",
+      "a3003.jpg",
+      "a3004.jpg",
+      "a3005.jpg"
+    ]
+  },
+  model6: {
+    capacity: 390,
+    output: "500W",
+    voltage: "220V",
+    battery: "Lithium",
+    charging: "4 - 5 Hours",
+    wave: "Modified SineWave",
+    frequency: "50/60 Hz",
+    images: [
+    "3901.jpg",
+      "3902.jpg",
+      "3903.jpg",
+      "3904.jpg",
+      "3905.jpg"
+    ]
+  }
+};
+
+function updateModel() {
+  const selected = document.getElementById("station").value;
+  const m = models[selected];
+
+  document.getElementById("cap").innerText = m.capacity + "Wh";
+  document.getElementById("out").innerText = m.output;
+  document.getElementById("volt").innerText = m.voltage;
+  document.getElementById("battery").innerText = m.battery;
+  document.getElementById("charging").innerText = m.charging;
+  document.getElementById("wave").innerText = m.wave;
+  document.getElementById("frequency").innerText = m.frequency;
+
+  // MAIN IMAGE
+  document.getElementById("mainImage").src = m.images[0];
+
+  // GALLERY
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+
+  m.images.forEach(img => {
+  const image = document.createElement("img");
+  image.src = img;
+
+  image.onclick = () => {
+    document.getElementById("mainImage").src = img; // ✅ change main image
+  };
+
+  gallery.appendChild(image);
+});
+
+
+/*m.images.forEach(img => {
+    const image = document.createElement("img");
+    image.src = img;
+
+    image.onclick = () => openModal(img);
+    
+    
+    mainImage.src = img;
+
+    gallery.appendChild(image);
+  });*/
+}
+
+function calculate() {
+  const selected = document.getElementById("station").value;
+  const m = models[selected];
+  const watts = document.getElementById("watts").value;
+
+  if (!watts || watts <= 0) {
+    document.getElementById("result").innerHTML = "Enter valid watts";
+    return;
+  }
+
+  const hours = m.capacity / watts;
+
+  document.getElementById("result").innerHTML =
+    "⏱️ " + hours.toFixed(2) + " hours";
+}
+
+/* MODAL */
+function openModal(src) {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+updateModel();
+document.getElementById("year").textContent = new Date().getFullYear();
+function setDeviceWatts() {
+  const deviceWatts = document.getElementById("device").value;
+  
+  if (deviceWatts) {
+    document.getElementById("watts").value = deviceWatts;
+  }
+}
+
+
+function setDeviceWatts() {
+  const deviceWatts = document.getElementById("device").value;
+
+  if (deviceWatts) {
+    document.getElementById("watts").value = deviceWatts;
+    calculate(); // auto run
+  }159
+}
+
+
+const deviceName = document.getElementById("device").options[
+  document.getElementById("device").selectedIndex
+].text;
+
+document.getElementById("result").innerHTML =
+  "⏱️ " + hours.toFixed(2) + " hours (" + deviceName + ")";
+
+
+  function compareModels() {
+  const modelA = models[compareModel0.value];
+  const modelB = models[compareModel.value];
+
+  if (compareModel0.value === compareModel.value) {
+    compareResult.innerHTML = "⚠️ Choose different models to compare";
+    return;
+  }
+
+  compareResult.innerHTML = `
+    <table class="compare-table">
+      <tr>
+        <td></td>
+        <td class="compare-title">${compareModel0.options[compareModel0.selectedIndex].text}</td>
+        <td class="compare-title">${compareModel.options[compareModel.selectedIndex].text}</td>
+      </tr>
+
+      <tr>
+        <td>Capacity</td>
+        <td>${modelA.capacity}Wh</td>
+        <td>${modelB.capacity}Wh</td>
+      </tr>
+
+      <tr>
+        <td>Output</td>
+        <td>${modelA.output}</td>
+        <td>${modelB.output}</td>
+      </tr>
+
+      <tr>
+        <td>Voltage</td>
+        <td>${modelA.voltage}</td>
+        <td>${modelB.voltage}</td>
+      </tr>
+
+      <tr>
+        <td>Battery</td>
+        <td>${modelA.battery}</td>
+        <td>${modelB.battery}</td>
+      </tr>
+
+      <tr>
+        <td>Charging</td>
+        <td>${modelA.charging}</td>
+        <td>${modelB.charging}</td>
+      </tr>
+
+      <tr>
+        <td>Wave</td>
+        <td>${modelA.wave}</td>
+        <td>${modelB.wave}</td>
+      </tr>
+
+      <tr>
+        <td>Frequency</td>
+        <td>${modelA.frequency}</td>
+        <td>${modelB.frequency}</td>
+      </tr>
+    </table>
+  `;
+
+
+  function openModal(src) {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modalImg").src = src;
+}
+}
+</script>
+
+
+<script>
+function toggleModelDropdown() {
+  const dropdown = document.getElementById("modelOptions");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+function selectModel(value, img, text) {
+  // update UI
+  document.getElementById("selectedImg").src = img;
+  document.getElementById("selectedText").innerText = text;
+
+  // update real select (important!)
+  const select = document.getElementById("station");
+  select.value = value;
+
+  // trigger your existing function
+  updateModel();
+
+  // close dropdown
+  document.getElementById("modelOptions").style.display = "none";
+}
+
+// close if clicked outside
+document.addEventListener("click", function(e) {
+  if (!e.target.closest(".model-dropdown")) {
+    document.getElementById("modelOptions").style.display = "none";
+  }
+});
+</script>
+
+
+<script>
+function toggleDeviceDropdown() {
+  const dropdown = document.getElementById("deviceOptions");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+function selectDevice(value, img, text) {
+  // update UI
+  document.getElementById("selectedDeviceImg").src = img;
+  document.getElementById("selectedDeviceText").innerText = text;
+
+  // update hidden select
+  const select = document.getElementById("device");
+  select.value = value;
+
+  // trigger your existing function
+  setDeviceWatts();
+
+  // close dropdown
+  document.getElementById("deviceOptions").style.display = "none";
+}
+
+// close when clicking outside
+document.addEventListener("click", function(e) {
+  if (!e.target.closest(".device-dropdown")) {
+    document.getElementById("deviceOptions").style.display = "none";
+  }
+});
+</script>
+
+
+<script>
+function toggleCompareDropdown(id) {
+  const el = document.getElementById(id + "Options");
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+function selectCompare(prefix, value, img, text) {
+  // update UI
+  document.getElementById(prefix + "Img").src = img;
+  document.getElementById(prefix + "Text").innerText = text;
+
+  // update hidden select
+  if(prefix === "cmp1"){
+    document.getElementById("compareModel").value = value;
+  } else {
+    document.getElementById("compareModel0").value = value;
+  }
+
+  // close dropdown
+  document.getElementById(prefix + "Options").style.display = "none";
+}
+
+// close all dropdowns
+document.addEventListener("click", function(e) {
+  if (!e.target.closest(".compare-dropdown")) {
+    document.querySelectorAll(".compare-options").forEach(d => d.style.display = "none");
+  }
+});
+</script>
