@@ -1,0 +1,1095 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Product landing page for [Product Name]">
+  <title>Power Station 300W</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /*header {
+      background-color: #ff6f61;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }*/
+    
+    
+    header {
+  /*background-color: #f66b07;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; *//* space between logo and text */
+}
+
+.brand-logo {
+  width: 300px;   /* adjust size as needed */
+  height: auto;
+}
+
+
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .product-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .product-section {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .product-details {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .specification--wrap--lxVQ2tj {
+        flex: 1;
+      }
+    }
+
+    .product-title {
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .product-image {
+      max-width: 100%;
+      display: block;
+      margin: 20px 0;
+    }
+
+    .price {
+      font-size: 1.5em;
+      color: #ff5722;
+      margin: 10px 0;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .discount {
+      color: #ff6f61;
+      font-weight: bold;
+    }
+
+    .product-details, .reviews {
+      margin: 30px 0;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ff5722;
+      color: white;
+      padding: 15px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .reviews-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.review-card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  /* margin removed — use gap for spacing */
+  width: calc(33.33% - 20px); /* 3 per row on large screens */
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: width 0.3s ease;
+}
+
+/* Medium screens: 2 reviews per row */
+@media (max-width: 768px) {
+  .review-card {
+    width: calc(50% - 20px);
+  }
+}
+
+/* Small screens: 1 review per row */
+@media (max-width: 480px) {
+  .review-card {
+    width: 100%;
+  }
+}
+
+
+    .review-card h4 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .review-card p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .specifications-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .specifications-table th,
+    .specifications-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .specifications-table tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .specifications-table tr td[colspan="2"] {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+    
+    
+    /*new code */
+    
+    
+    .product-listings {
+  margin: 40px 0;
+}
+
+.product-listings h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: calc(20% - 20px); /* 5 per row on large screens */
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: width 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  margin: 5px 0;
+}
+
+/* Medium screens - tablets: 3 products per row */
+@media (max-width: 992px) {
+  .product-card {
+    width: calc(33.333% - 20px);
+  }
+}
+
+/* Small screens - phones: 2 products per row */
+@media (max-width: 600px) {
+  .product-card {
+    width: calc(50% - 20px);
+  }
+}
+
+/* Extra small - very small phones: 1 product per row */
+@media (max-width: 400px) {
+  .product-card {
+    width: 100%;
+  }
+}
+
+
+/* new code */
+.thumbnail-gallery {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+  border: 2px solid #ff6f61;
+}
+
+.main-image {
+  margin-bottom: 10px;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<header>
+<img src="Gemini_Generated_Image_7zoecx7zoecx7zoe.png" alt="[Brand Logo]" class="brand-logo" style="width: 100%; height: auto;">
+  <h1></h1>
+  <!--<p>Your ultimate store for your needs</p>-->
+</header>
+
+<div class="container">
+  <!-- Product Details and Specifications Side by Side -->
+  <div class="product-section">
+
+    <!--<div class="product-details">-->
+      <!--<img src="https://ae-pic-a1.aliexpress-media.com/kf/S3f7286ab135247bc98225fd77d0dd818T.jpg_640x640.jpg_.webp" alt="[Product Name]" class="product-image">-->
+<!--<img src="Screenshot_25-5-2025_151125_pixlr.com.jpeg" alt="[Product Name]" class="product-image">
+      <div class="product-info">
+        <h2 class="product-title">Solar Power Station 150 Watts</h2>
+        <div class="price">
+          <span class="old-price">₱5000</span>
+          ₱3000 <span class="discount">40% OFF</span>
+        </div>
+        <p><strong>Available Colors:</strong> Black</p>
+        <p><strong>Shipping:</strong> Maxim/Lalamove</p>
+        <a href="#buy-now" class="button">Buy Now</a>
+      </div>
+    </div>-->
+
+
+
+
+
+<div class="product-details">
+  <div class="main-image">
+    <img id="mainProductImage" src="Screenshot_30-5-2025_54254_pixlr.com.jpeg" alt="[Product Name]" class="product-image">
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="thumbnail-gallery">
+    <img src="Screenshot_30-5-2025_5951_pixlr.com.jpeg" alt="Thumb 1" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_30-5-2025_21639_pixlr.com.jpeg" alt="Thumb 2" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_30-5-2025_51653_pixlr.com.jpeg" alt="Thumb 3" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_30-5-2025_54045_pixlr.com.jpeg" alt="Thumb 4" class="thumbnail" onclick="changeImage(this)">
+    <img src="Screenshot_30-5-2025_54254_pixlr.com.jpeg" alt="Thumb 5" class="thumbnail active" onclick="changeImage(this)">
+  </div>
+
+  <div class="product-info">
+    <h2 class="product-title">Portable Solar Power station 300 Watts - 315WH 15A</h2>
+    <div class="price">
+      <span class="old-price">₱7000</span>
+      ₱5500 <span class="discount">Now</span>
+    </div>
+    <p><strong>Available Colors:</strong> Black</p>
+    <p><strong>Shipping:</strong> Maxim/Lalamove</p>
+    <!--<a href="#buy-now" class="button">Buy Now</a>-->
+  </div>
+
+
+
+
+
+
+
+
+  <div class="calculator-section" style="background: #fff;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" id="measure">
+    <h3>Power Station Runtime Calculator</h3>
+    <p>Enter device power (Watts) to estimate runtime:</p>
+    <select id="device" onchange="setDeviceWatts()" style="font-weight: 900;">
+  <option value="">-- Choose Device -- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
+  <option value="30" style="font-weight: 900;">Phone Charger (30W)</option>
+  <option value="60" style="font-weight: 900;">Laptop (60W)</option>
+  <option value="100" style="font-weight: 900;">TV (100W)</option>
+  <option value="10" style="font-weight: 900;">LED Light (10W)</option>
+  <option value="150" style="font-weight: 900;">Electric Fan (150W)</option>
+  <option value="300" style="font-weight: 900;">Rice Cooker (300W)</option>
+
+
+  <option value="80" style="font-weight: 900;">Box Fan (80W)</option>
+  <option value="10" style="font-weight: 900;">Bulb (10W)</option>
+  <option value="18" style="font-weight: 900;">Ceiling Fan (18W)</option>
+  <option value="18" style="font-weight: 900;">CFL Bulb (18W)</option>
+  <option value="20" style="font-weight: 900;">Clip Fan (20W)</option>
+  <option value="25" style="font-weight: 900;">Desk Lamp (25W)</option>
+
+
+  <option value="150" style="font-weight: 900;">Desktop (150W)</option>
+  <option value="70" style="font-weight: 900;">Desktop Fan (70W)</option>
+  <option value="40" style="font-weight: 900;">Exhaust Fan (40W)</option>
+  <option value="20" style="font-weight: 900;">Fast Charger (20W)</option>
+  <option value="15" style="font-weight: 900;">Florecent (15W)</option>
+  <option value="150" style="font-weight: 900;">Industrial Fan (150W)</option>
+  <option value="65" style="font-weight: 900;">Laptop (65W)</option>
+
+
+  <option value="45" style="font-weight: 900;">Laptop (45W)</option>
+  <option value="35" style="font-weight: 900;">LCD Monitor (35W)</option>
+  <option value="19" style="font-weight: 900;">Led Bulb (19W)</option>
+  <option value="5" style="font-weight: 900;">Led Bulb Small (5W)</option>
+  <option value="30" style="font-weight: 900;">Led Lights (30W)</option>
+  <option value="35" style="font-weight: 900;">LED Monitor (35W)</option>
+  <option value="1" style="font-weight: 900;">Mini Fan USB (1W)</option>
+  <option value="10" style="font-weight: 900;">Modem (10W)</option>
+
+
+   <option value="40" style="font-weight: 900;">NAS Storage (40W)</option>
+    <option value="25" style="font-weight: 900;">Network Switch (25W)</option>
+     <option value="10" style="font-weight: 900;">Night Light (10W)</option>
+      <option value="10" style="font-weight: 900;">Phone Charger (10W)</option>
+       <option value="45" style="font-weight: 900;">Phone Charger (45W)</option>
+        <option value="18" style="font-weight: 900;">Power Bank Charger (18W)</option>
+         <option value="50" style="font-weight: 900;">Printer (50W)</option>
+</select>
+</br></br><label>Or Enter Watts Manually:</label></br>
+<input type="number" id="watts" placeholder="Enter device watt (optional)" style="width:94%; font-weight: 900;">
+    <button onclick="calculate()" class="buttoncalcule">Calculate</button>
+    <p></p>
+    <div class="result" id="result"></div>
+    <p id="runtimeResult" style="margin-top:15px; font-weight:bold;"></p>
+  </div>
+
+
+  <style>
+/* SELECT */
+#device{
+  width: 94%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#device:hover{
+  border-color: #3b82f6;
+}
+
+#device:focus{
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+/* INPUT */
+#watts{
+  width: 94%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+#watts:hover{
+  border-color: #3b82f6;
+}
+
+#watts:focus{
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+/* BUTTON */
+.buttoncalcule{
+  width: 94%;
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(59,130,246,0.25);
+}
+
+button:active{
+  transform: scale(0.98);
+}
+</style>
+</div>
+
+
+    <!-- Specifications Table -->
+    <div class="specification--wrap--lxVQ2tj" id="nav-specification" data-pl="product-specs">
+      <div class="title--wrap--NWOaiSp">
+        <div class="title--text--Otu0bLr">
+          <h2 class="title--title--O6xcB1q">Specifications</h2>
+        </div>
+      </div>
+      <table class="specifications-table">
+        <tbody>
+          <tr><th>Specification</th><th>Description</th></tr>
+          <tr><td>Model Number</td><td>PS-315</td></tr>
+          <tr><td>Display Screen</td><td>Yes</td></tr>
+          <tr><td>Nominal Capacity</td><td>&gt;115000mAh</td></tr>
+          <tr><td>Type</td><td>Lifepo4</td></tr>
+          <tr><td>Brand Name</td><td>OEM</td></tr>
+          <tr><td>Size</td><td>F</td></tr>
+          <tr><td>Replacement Battery</td><td>No</td></tr>
+          <tr><td>Set Type</td><td>Charger Sets</td></tr>
+          <tr><td>BMS</td><td>Yes</td></tr>
+          <tr><td>Bundle</td><td>Bundle 1</td></tr>
+          <tr><td>Certification</td><td>CE, FCC, RoHS, UL</td></tr>
+          <tr><td>High-concerned Chemical</td><td>none</td></tr>
+          <tr><td>Battery Core Manufacturer</td><td>other</td></tr>
+          <tr><td>Origin</td><td>Mainland China</td></tr>
+          <tr><td colspan="2"><strong>Features</strong></td></tr>
+          <tr><td style="background: yellow;">220V Compatible</td><td>Solar-powered battery generator</td></tr>
+          <tr><td style="background: yellow;">14.5V Energy Capacity</td><td>Portable solar generator</td></tr>
+          <tr><td style="background: yellow;">Corrected Sine Wave</td><td>Good or emergency</td></tr>
+          <tr><td style="background: yellow;">USB Input</td><td>For work from home</td></tr>
+          <tr><td style="background: yellow;">DC Input</td><td>For Power interupted</td></tr>
+          <tr><td style="background: yellow;">Flash Light</td><td>Good for small Devices</td></tr>
+          <tr><td style="background: yellow;">Emergency Light</td><td>Best for tv cellphone fans tablet lights</td></tr>
+          <tr><td style="background: yellow;">50/60 HZ</td><td></td></tr>
+          <tr><td style="background: yellow;">Charging Time 8-9 Hours (AC Charger)</td><td></td></tr>
+          <tr><td style="
+    background: yellow;
+">5000 Life Cycle</td><td style="background: yellow;">Free Bulb Lights</td></tr>
+          <tr><td style="
+    background: yellow;
+">300 Watts</td><td></td></tr>
+<tr><td style="
+    background: yellow;
+">315 Watt Hours</td><td></td></tr>
+          <tr><td style="
+    background: yellow;
+">15Amps</td><td></td></tr>
+          
+        </tbody>
+      </table>
+    </div>
+
+  </div> <!-- .product-section -->
+
+  <!-- Product Features Section -->
+  <!--<div class="product-description">
+    <h3>Product Features</h3>
+    <ul>
+      <li><strong>Feature 1:</strong> [Feature description]</li>
+      <li><strong>Feature 2:</strong> [Feature description]</li>
+      <li><strong>Feature 3:</strong> [Feature description]</li>
+      <li><strong>Feature 4:</strong> [Feature description]</li>
+    </ul>
+  </div>-->
+
+
+<div class="product-description">
+    <h3>300 Watts Variants</h3>
+    <ul>
+      <li><strong>420 WH - 21 A</strong> &nbsp;&nbsp;&nbsp;Higher Capacity</li>
+      <li><strong>370 WH - 18 A</strong> &nbsp;&nbsp;&nbsp;Medium Capacity</li>
+      <li><strong>315 WH - 15 A</strong> &nbsp;&nbsp;&nbsp;Entry Level Capacity</li>
+      
+    </ul>
+  </div>
+  
+  
+  <!-- Product Listings Section -->
+<div class="product-listings">
+  <h3>More Products You May Like</h3>
+  <div class="product-grid">
+    <!-- 15 product cards -->
+    
+    
+    
+    <div class="product-card">
+      <a href="300watts15.html" style="text-decoration: none; color: black;"><img src="Screenshot_30-5-2025_54254_pixlr.com.jpeg" alt="Product 4">
+      <p>Portable Solar Power station 300 Watts - 315WH 15A</p>
+      <p class="price">₱5700</p></a>
+    </div>
+    <div class="product-card">
+      <a href="300watts18.html" style="text-decoration: none; color: black;"><img src="H5fd8d1316a62474a8d0a5305b845b319L.webp" alt="Product 5">
+      <p>Portable Solar Power station 300 Watts - 370WH 18A</p>
+      <p class="price">₱7000</p>
+    </a></div>
+
+    
+    
+    
+    <div class="product-card"><a href="300watts21.html" style="text-decoration: none; color: black;">
+      <img src="H13c8a5080f924005bd0260f9b22e895fL.webp" alt="Product 9">
+      <p>Portable Solar Power station 300 Watts - 420WH 21A</p>
+      <p class="price">₱8700</p></a>
+    </div>
+    
+
+    <div class="product-card">
+      <a href="150watts.html" style="text-decoration: none; color: black;"><img src="H24c1e63e8f3c4cb1a7a6d232b4700df3B.webp" alt="Product 11">
+      <p>Portable Solar Power station 150 Watts - 150WH 12A</p>
+      <p class="price">₱3000</p></a>
+    </div>
+
+
+    <div class="product-card">
+      <a href="350watts.html" style="text-decoration: none; color: black;"><img src="8.jpg" alt="Product 11">
+      <p>Portable Solar Power station 350 Watts - 224WH 18A</p>
+      <p class="price">₱4800</p></a>
+    </div>
+    
+    
+    
+    
+  </div>
+</div>
+
+
+  <!-- Customer Reviews -->
+  
+</div>
+
+<!-- Footer -->
+<div class="footer-copywrite y2023" style="background: #f66b07; color: white;">
+
+
+  <style>
+.footer {
+  background: linear-gradient(135deg, #f66b07, #ff8c2f);
+  color: white;
+  padding: 50px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.footer h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer p, .footer a {
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.footer-social img {
+  width: 28px;
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+
+.footer-social img:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 30px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.badge {
+  background: rgba(255,255,255,0.2);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  font-size: 12px;
+}
+</style>
+  <div class="footer">
+  <div class="footer-container">
+
+    <div class="footer-grid">
+
+      <!-- BRAND -->
+      <div>
+        <h3>BuyValue Batteries</h3>
+        <p>
+          Your trusted source for portable power stations, lithium batteries,
+          and solar solutions. Reliable energy anytime, anywhere.
+        </p>
+        <div>
+          <span class="badge">✔ Fast Delivery</span>
+          <span class="badge">✔ Warranty Included</span>
+          <span class="badge">✔ Trusted Quality</span>
+        </div>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div>
+        <h3>Products</h3>
+        <a href="150watts.html">150W Power Station</a><br>
+        <a href="300watts15.html">300W 15A LifePO4 Power Station</a><br>
+        <a href="300watts18.html">300W 18A LifePO4 Batteries</a><br>
+        <a href="300watts21.html">300W 21A LifePO4 </a><br>
+        <a href="350watts.html">350W 12A Lithium </a><br>
+        
+      </div>
+
+      <!-- SUPPORT -->
+      <div>
+        <h3>Calculator</h3>
+        <a href="#measure">Hour Measurer</a><br>
+        
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h3>Contact</h3>
+        <p>📍 Cebu, Philippines</p>
+        <p>📞 +63 923 464 8295</p>
+        <!--<p>✉ support@buyvalue-batteries.com</p>-->
+
+
+        <div>
+  <a href="https://web.facebook.com/profile.php?id=100088412001694"
+     style="display: flex; align-items: center; gap: 8px; text-decoration: none;" target="_blank">
+     
+    <img src="PikPng.com_facebook-circle-icon-png_5902093.png" alt="Facebook" width="24">
+    <span>Facebook</span>
+    
+  </a>
+</div>
+
+        <!--<div class="footer-social">
+          <a href="https://web.facebook.com/profile.php?id=100088412001694">
+            <img src="PikPng.com_facebook-circle-icon-png_5902093.png" alt="Facebook">
+          </a>
+        </div>-->
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom">
+      © 2023–2026 BuyValue Batteries. All rights reserved.<br>
+      Powering your life with reliable energy ⚡
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+<script>
+  function changeImage(thumb) {
+    const mainImage = document.getElementById('mainProductImage');
+    mainImage.src = thumb.src;
+
+    // Optional: highlight active thumbnail
+    document.querySelectorAll('.thumbnail').forEach(img => img.classList.remove('active'));
+    thumb.classList.add('active');
+  }
+</script>
+
+
+<script>
+  // ⚡ Set your power station capacity here (in Watt-hours)
+  const batteryCapacityWh = 315;
+
+  function setDeviceWatts() {
+    const device = document.getElementById("device").value;
+    if (device) {
+      document.getElementById("watts").value = device;
+    }
+  }
+
+  function calculate() {
+    const wattsInput = document.getElementById("watts").value;
+    const watts = parseFloat(wattsInput);
+
+    const resultBox = document.getElementById("result");
+    const runtimeBox = document.getElementById("runtimeResult");
+
+    if (!watts || watts <= 0) {
+      resultBox.innerHTML = "Please enter a valid watt value.";
+      runtimeBox.innerHTML = "";
+      return;
+    }
+
+    // Runtime formula: Wh / W = hours
+    const runtimeHours = batteryCapacityWh / watts;
+    const hours = Math.floor(runtimeHours);
+    const minutes = Math.round((runtimeHours - hours) * 60);
+
+    resultBox.innerHTML = `Device Load: ${watts}W`;
+    runtimeBox.innerHTML = `Estimated Runtime: ${hours}h ${minutes}m (based on ${batteryCapacityWh}Wh)`;
+  }
+</script>
+
+
+
+
+
+
+
+
+<!--<button class="chat-toggle" onclick="toggleChat()">💬</button>-->
+
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">
+    Live Chat
+    <span onclick="toggleChat()" style="cursor:pointer;">✖</span>
+  </div>
+
+  <!-- ✅ OPTIONS -->
+  <div class="chat-options" id="chatOptions">
+    <button onclick="selectOption('What is your price?')">💰 Price</button>
+    <button onclick="selectOption('Do you have stock available?')">📦 Stock</button>
+    <button onclick="selectOption('How long is delivery?')">🚚 Delivery</button>
+  </div>
+
+  <div class="chat-messages" id="messages"></div>
+
+
+  <div class="msg user" id="removefirstmessage">
+        <img class="avatar" src="https://i.pravatar.cc/100?img=12">
+        <div class="content">
+          <div class="username">Admin</div>
+          <div class="bubble" style="text-align: left;">Hello Welcome Just send me a message if you have questions.😊</div>
+        </div>
+      </div>
+
+  <div class="chat-input">
+    <input type="text" id="messageInput" placeholder="Type message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+
+<style>
+
+
+/* FLOAT BUTTON */
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* CHAT BOX */
+.chat-box {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: #1e293b;
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* HEADER */
+.chat-header {
+  background: #334155;
+  color: white;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* OPTIONS */
+.chat-options {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid #334155;
+}
+
+.chat-options button {
+  background: #334155;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.chat-options button:hover {
+  background: #3b82f6;
+}
+
+/* MESSAGES */
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* MESSAGE WRAPPER */
+.msg {
+  display: flex;
+  align-items: flex-start;
+  margin: 8px 0;
+  gap: 8px;
+}
+
+/* AVATAR */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* NAME + BUBBLE */
+.content {
+  max-width: 75%;
+}
+
+/* USERNAME */
+.username {
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-bottom: 3px;
+}
+
+/* BUBBLES */
+.bubble {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* USER */
+.user .bubble {
+  background: #3b82f6;
+}
+
+/* ADMIN */
+.admin .bubble {
+  background: #475569;
+}
+
+/* ALIGN RIGHT USER */
+.user {
+  flex-direction: row-reverse;
+}
+
+.user .content {
+  text-align: right;
+}
+
+/* INPUT */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #334155;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  background: #0f172a;
+  color: white;
+}
+
+.chat-input button {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .chat-box {
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+}
+</style>
+
+
+<script>
+let user_id = null;
+let firstMessageSent = false;
+let isAtBottom = true;
+
+/* demo avatars + names */
+const USERS = {
+  user: {
+    name: "Admin",
+    avatar: "https://i.pravatar.cc/100?img=12"
+  },
+  admin: {
+    name: "Guest",
+    avatar: "https://i.pravatar.cc/100?img=5"
+  }
+};
+
+fetch("create_user.php")
+.then(res => res.json())
+.then(data => user_id = data.user_id);
+
+function toggleChat(){
+  const box = document.getElementById("chatBox");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+}
+
+/* ✅ OPTION CLICK */
+function selectOption(text){
+  document.getElementById("messageInput").value = text;
+
+  // 🔥 auto send (optional UX)
+  sendMessage();
+}
+
+/* ✅ SEND MESSAGE */
+function sendMessage(){
+  const input = document.getElementById("messageInput");
+  const text = input.value.trim();
+  if(!text) return;
+
+  fetch("send_message.php", {
+    method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:`user_id=${user_id}&message=${encodeURIComponent(text)}&sender=user`
+  });
+
+  input.value="";
+
+  // ❗ hide options after first send
+  if(!firstMessageSent){
+    document.getElementById("chatOptions").style.display = "none";
+    firstMessageSent = true;
+  }
+
+
+  document.getElementById("removefirstmessage").innerHTML = "";
+}
+
+/* ✅ LOAD MESSAGES */
+function loadMessages(){
+  if(!user_id) return;
+
+  const box = document.getElementById("messages");
+
+  // check if user is near bottom
+  isAtBottom = box.scrollTop + box.clientHeight >= box.scrollHeight - 20;
+
+  fetch(`get_messages.php?user_id=${user_id}`)
+  .then(res=>res.json())
+  .then(data=>{
+    box.innerHTML="";
+
+    data.forEach(msg=>{
+      const role = USERS[msg.sender] ? msg.sender : "admin";
+
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("msg", role);
+
+      wrapper.innerHTML = `
+        <img class="avatar" src="${USERS[role].avatar}">
+        <div class="content">
+          <div class="username">${USERS[role].name}</div>
+          <div class="bubble">${msg.message}</div>
+        </div>
+      `;
+
+      box.appendChild(wrapper);
+    });
+
+    // scroll only if already at bottom
+    if(isAtBottom){
+      box.scrollTop = box.scrollHeight;
+    }
+  });
+}
+
+setInterval(loadMessages,1000);
+
+/* ENTER KEY */
+document.getElementById("messageInput")
+.addEventListener("keypress", e=>{
+  if(e.key==="Enter") sendMessage();
+});
+</script>
+
+</body></html>
