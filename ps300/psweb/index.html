@@ -394,8 +394,8 @@ td {
     
     <div class="model-dropdown">
   <div class="model-selected" onclick="toggleModelDropdown()">
-    <img id="selectedImg" src="1.jpg">
-    <span id="selectedText">Model 2 - 350W</span>
+    <img id="selectedImg" src="5.jpg">
+    <span id="selectedText">Model 4 - 350WH</span>
   </div>
 
   <div class="model-options" id="modelOptions">
@@ -409,7 +409,7 @@ td {
       <img src="3002.jpg"> Model 3 - 300W
     </div>
     <div onclick="selectModel('model4', '5.jpg', 'Model 4 - 300W')">
-      <img src="5.jpg"> Model 4 - 300W
+      <img src="5.jpg"> Model 4 - 300WH
     </div>
     <div onclick="selectModel('model5', 'a3003.jpg', 'Model 5 - 300W')">
       <img src="a3003.jpg"> Model 5 - 300W
@@ -1139,7 +1139,7 @@ function updateModel() {
   document.getElementById("frequency").innerText = m.frequency;
 
   // MAIN IMAGE
-  document.getElementById("mainImage").src = m.images[1];
+  document.getElementById("mainImage").src = m.images[0];
 
   // GALLERY
   const gallery = document.getElementById("gallery");
